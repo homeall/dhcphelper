@@ -6,4 +6,8 @@ ENV IP=""
 
 EXPOSE 67 67/udp
 
-ENTRYPOINT dhcp-helper -s ${IP}
+RUN echo "#!/bin/sh \n dhcp-helper -s ${IP} -n" > ./entrypoint.sh
+
+RUN chmod +x ./entrypoint.sh
+
+ENTRYPOINT ["./entrypoint.sh"]
