@@ -1,8 +1,40 @@
 [![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![pull](https://img.shields.io/docker/pulls/homeall/dhcphelper)](https://img.shields.io/docker/pulls/homeall/dhcphelper) [![pull](https://img.shields.io/docker/image-size/homeall/dhcphelper)](https://img.shields.io/docker/image-size/homeall/dhcphelper)
 
-# DHCP Relay
+# DHCP Relay in docker
 
-## About this project
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#potentials-issues">Potentials issues</a></li>
+      </ul>
+       <ul>
+        <li><a href="#testing">Testing</a></li>
+      </ul>
+       <ul>
+        <li><a href="#pihole-and-dhcp-relay">PiHole and DHCP Relay</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
 This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
 
@@ -10,8 +42,8 @@ The DHCP server in the container does get only *unicast the DHCPOFFER messages* 
 
 It will **not** work DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
 
-
-## Getting started
+<!-- GETTING STARTED -->
+## Getting Started
 
 ### Prerequisites
 
@@ -20,7 +52,7 @@ You will need to have:
 * [Docker](https://docs.docker.com/engine/install/)
 * [docker-compose](https://docs.docker.com/compose/) `This step is optional`
 
-
+<!-- USAGE -->
 ## Usage
 
 You can run as:
@@ -65,7 +97,7 @@ Pre-scan script results:
 Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
 
-### PiHole + DHCP Relay
+### PiHole and DHCP Relay
 
 It will work amazing both together **dhcphelper** and [PiHole](https://hub.docker.com/r/pihole/pihole) 
 
@@ -110,15 +142,17 @@ services:
     cap_add:
       - NET_ADMIN
 ```
+<!-- LICENSE -->
+## License
 
+Distributed under the MIT license. See `LICENSE` for more information.
+
+<!-- CONTACT -->
 ## Contact
 
 Please free to open a ticket on Github.
 
-## Licence
-
-Distributed under the MIT license. See `LICENSE` for more information.
-
+<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
  * [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038)
