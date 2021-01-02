@@ -99,9 +99,9 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 
 ### PiHole and DHCP Relay
 
-It will work amazing both together **dhcphelper** and [PiHole](https://hub.docker.com/r/pihole/pihole) 
+It will work amazing both together **dhcphelper** and [PiHole](https://github.com/pi-hole/pi-hole) 
 
-Simple [docker-compose.yml](https://docs.docker.com/compose/):
+A simple [docker-compose.yml](https://docs.docker.com/compose/):
 
 ```
 version: "3.3"
