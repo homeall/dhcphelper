@@ -81,6 +81,6 @@ Pre-scan script results:
 |     Router: 192.168.1.1
 Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
- ## Licence
+ ### Licence
 
 Distributed under the MIT license
