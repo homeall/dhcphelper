@@ -57,6 +57,8 @@ You will need to have:
 <!-- USAGE -->
 ## Usage
 
+You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
+
 You can run as:
 
 `docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
