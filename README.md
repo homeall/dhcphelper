@@ -83,4 +83,4 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
  ### Licence
 
-Distributed under the MIT license
+Distributed under the MIT license. `See LICENSE` for more information.
