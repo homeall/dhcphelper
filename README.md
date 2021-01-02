@@ -98,3 +98,4 @@ Distributed under the MIT license. `See LICENSE` for more information.
 
 ## Acknowledgements
  * [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038)
+ * [@Simon Kelley](http://www.thekelleys.org.uk/dhcp-helper/) who is the author of dnsmasq and dhcp-helper.
