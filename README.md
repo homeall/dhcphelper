@@ -55,6 +55,17 @@ services:
     cap_add:
       - NET_ADMIN
 ```
+### Potentials issues
+
+Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS.
+
+Run command to check:
+
+```
+nc -uzvw3 192.168.1.11 67
+Connection to 192.168.1.11 port 67 [udp/bootps] succeeded!
+```
+
 ### Testing
 
 You can run a command from Linux/Mac:
