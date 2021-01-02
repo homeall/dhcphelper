@@ -1,4 +1,4 @@
-[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions)
+[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # DHCP Relay
 This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
@@ -81,3 +81,6 @@ Pre-scan script results:
 |     Router: 192.168.1.1
 Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
+ ## Licence
+
+Distributed under the MIT license
