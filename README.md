@@ -1,3 +1,5 @@
+[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions)
+
 # DHCP Relay
 This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
 
