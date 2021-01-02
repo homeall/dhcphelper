@@ -72,8 +72,8 @@ Please make sure your host has port **67 on UDP** *open* on **iptables/firewall*
 Run command to check:
 
 ```
-nc -uzvw3 192.168.1.11 67
-Connection to 192.168.1.11 port 67 [udp/bootps] succeeded!
+nc -uzvw3 127.0.0.1 67
+Connection to 127.0.0.1 port 67 [udp/bootps] succeeded!
 ```
 
 ### Testing
