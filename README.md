@@ -94,7 +94,7 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
  ### Licence
 
-Distributed under the MIT license. `See LICENSE` for more information.
+Distributed under the MIT license. See `LICENSE` for more information.
 
 ## Acknowledgements
  * [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038)
