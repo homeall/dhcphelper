@@ -42,7 +42,7 @@ The DHCP server in the container does get only *unicast the DHCPOFFER messages* 
 
 It will **not** work DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
 
-If you need to know more about how it works **DHCP protocol**, I am higly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
+If you need to know more about how it works **DHCP protocol**, I am highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
 
 <!-- GETTING STARTED -->
 ## Getting Started
