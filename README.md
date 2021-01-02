@@ -63,6 +63,8 @@ You can run as:
 
 `docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
 
+![](dhcphelper.gif)
+
 ### Potentials issues
 
 Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS and it is running on network host mode **ONLY**.
