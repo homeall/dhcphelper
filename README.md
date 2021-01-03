@@ -53,7 +53,7 @@ You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
 * :whale2: [docker-compose](https://docs.docker.com/compose/) 
-  >This step is optional
+ >This step is optional
 
 <!-- USAGE -->
 ## Usage
@@ -106,7 +106,7 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 
 ### PiHole and DHCP Relay
 
-:moneybag: It will work amazing both together **dhcphelper** and [PiHole](https://github.com/pi-hole/pi-hole) 
+:moneybag: It will work amazing both together **dhcphelper** and [PiHole](https://github.com/pi-hole/pi-hole) :yin_yang:
 
 :sparkle: A simple [docker-compose.yml](https://docs.docker.com/compose/):
 
