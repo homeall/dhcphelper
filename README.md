@@ -34,15 +34,15 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Project  
 
-This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
+:8ball: This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
 
-The DHCP server in the container does get only *unicast the DHCPOFFER messages* when it will have to get **broadcast DHCPOFFER messages** on the [network](https://stackoverflow.com/questions/38816077/run-dnsmasq-as-dhcp-server-from-inside-a-docker-container).
+:yo_yo: The DHCP server in the container does get only *unicast the DHCPOFFER messages* when it will have to get **broadcast DHCPOFFER messages** on the [network](https://stackoverflow.com/questions/38816077/run-dnsmasq-as-dhcp-server-from-inside-a-docker-container).
 
-It will **not** work the DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
+:nazar_amulet: It will **not** work the DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
 
-If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
+:man_student: If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -51,15 +51,16 @@ If you need to know more about how it works **DHCP protocol**, I highly recommen
 
 You will need to have:
 
-* [Docker](https://docs.docker.com/engine/install/)
-* [docker-compose](https://docs.docker.com/compose/) `This step is optional`
+* :whale: [Docker](https://docs.docker.com/engine/install/)
+* :whale2: [docker-compose](https://docs.docker.com/compose/) 
+  >This step is optional
 
 <!-- USAGE -->
 ## Usage
 
-You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
+:closed_book: You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
 
-You can run as:
+:fountain_pen: You can run as:
 
 `docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
 
@@ -67,9 +68,9 @@ You can run as:
 
 ### Potentials issues
 
-Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS and it is running on network host mode **ONLY**.
+:warning: Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS and it is running on network host mode **ONLY**.
 
-Run command to check:
+:bangbang: Run command to check:
 
 ```
 nc -uzvw3 127.0.0.1 67
@@ -78,11 +79,11 @@ Connection to 127.0.0.1 port 67 [udp/bootps] succeeded!
 
 ### Testing
 
-You can run a command from Linux/Mac:
+:arrow_right: You can run a command from Linux/Mac:
 
 ```sudo nmap --script broadcast-dhcp-discover -e $Your_Interface```
 
-Output result:
+:arrow_down: Output result:
 
 ```Starting Nmap 7.91 ( https://nmap.org ) at 2021-01-01 19:40 GMT
 Pre-scan script results:
@@ -105,9 +106,9 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 
 ### PiHole and DHCP Relay
 
-It will work amazing both together **dhcphelper** and [PiHole](https://github.com/pi-hole/pi-hole) 
+:moneybag: It will work amazing both together **dhcphelper** and [PiHole](https://github.com/pi-hole/pi-hole) 
 
-A simple [docker-compose.yml](https://docs.docker.com/compose/):
+:sparkle: A simple [docker-compose.yml](https://docs.docker.com/compose/):
 
 ```
 version: "3.3"
@@ -151,15 +152,15 @@ services:
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT license. See `LICENSE` for more information.
+:newspaper_roll: Distributed under the MIT license. See [LICENSE](https://raw.githubusercontent.com/homeall/dhcphelper/main/LICENSE) for more information.
 
 <!-- CONTACT -->
 ## Contact
 
-Please free to open a ticket on Github.
+:red_circle: Please free to open a ticket on Github.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
- * [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038)
- * [@Simon Kelley](http://www.thekelleys.org.uk/dhcp-helper/) who is the **author** of *dnsmasq* and *dhcp-helper*.
+ * :tada: [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038) :trophy:
+ * :tada: [@Simon Kelley](http://www.thekelleys.org.uk/dhcp-helper/) who is the **author** of *dnsmasq* and *dhcp-helper*. :1st_place_medal:
