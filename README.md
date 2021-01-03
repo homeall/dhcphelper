@@ -49,7 +49,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-:beginner: It will work on any Linux box amd64 or Raspberry Pi with arm64 or arm32. 
+:beginner: It will work on any Linux box amd64 or [Raspberry Pi](https://www.raspberrypi.org) with arm64 or arm32. 
 
 ### Prerequisites
 
