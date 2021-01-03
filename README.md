@@ -49,6 +49,8 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
+:beginner: It will work on any Linux box amd64 or Raspberry Pi with arm64 or arm32. 
+
 ### Prerequisites
 
 You will need to have:
@@ -116,7 +118,7 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 
 ### [PiHole](https://github.com/pi-hole/pi-hole) and DHCP Relay
 
-:moneybag: It will work amazing both together **dhcphelper** and :registered: [PiHole](https://github.com/pi-hole/pi-hole) :yin_yang:
+:moneybag: It will work amazing both together **dhcphelper** and :copyright: [PiHole](https://github.com/pi-hole/pi-hole) :yin_yang:
 
 :sparkle: A simple [docker-compose.yml](https://docs.docker.com/compose/):
 
