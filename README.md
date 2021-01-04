@@ -85,6 +85,23 @@ nc -uzvw3 127.0.0.1 67
 Connection to 127.0.0.1 port 67 [udp/bootps] succeeded!
 ```
 
+:diamonds: On status column of the docker you will notice `healthy` word. This is telling you that docker is running [healtcheck](https://scoutapm.com/blog/how-to-use-docker-healthcheck) in order to make sure it will work properly. Please test yourself using the following command:
+
+```docker inspect --format "{{json .State.Health }}" dhcp | jq
+{
+  "Status": "healthy",
+  "FailingStreak": 0,
+  "Log": [
+    {
+      "Start": "2021-01-04T10:28:11.8070681Z",
+      "End": "2021-01-04T10:28:14.8695872Z",
+      "ExitCode": 0,
+      "Output": "127.0.0.1 (127.0.0.1:67) open\n"
+    }
+  ]
+}
+```
+
 :arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 ### Testing
