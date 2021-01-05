@@ -100,6 +100,7 @@ $ docker inspect --format "{{json .State.Health }}" dhcp | jq
   ]
 }
 ```
+:arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 ### Testing
 
@@ -128,8 +129,6 @@ Pre-scan script results:
 |     Router: 192.168.1.1
 Nmap done: 0 IP addresses (0 hosts up) scanned in 10.26 seconds
 ```
-
-:arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 ### [PiHole](https://github.com/pi-hole/pi-hole) and DHCP Relay
 
