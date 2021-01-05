@@ -56,6 +56,8 @@
 
 You will need to have:
 
+[![Made with Docker !](https://img.shields.io/badge/Made%20with-Docker-blue)](https://github.com/homeall/dhcphelper/blob/main/Dockerfile)
+
 * :whale: [Docker](https://docs.docker.com/engine/install/)
 * :whale2: [docker-compose](https://docs.docker.com/compose/) 
  >This step is optional
