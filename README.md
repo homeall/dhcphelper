@@ -37,15 +37,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
 
-:8ball: This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
+This is a small docker image with a [DHCP Helper](http://www.thekelleys.org.uk/dhcp-helper/) useful in case when you have a DHCP server in the docker environment and you need a relay for broadcast.
 
-:yo_yo: The DHCP server in the container does get only *unicast the DHCPOFFER messages* when it will have to get **broadcast DHCPOFFER messages** on the [network](https://stackoverflow.com/questions/38816077/run-dnsmasq-as-dhcp-server-from-inside-a-docker-container).
+The DHCP server in the container does get only *unicast the DHCPOFFER messages* when it will have to get **broadcast DHCPOFFER messages** on the [network](https://stackoverflow.com/questions/38816077/run-dnsmasq-as-dhcp-server-from-inside-a-docker-container).
 
-:nazar_amulet: It will **not** work the DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
+It will **not** work the DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
 
 :man_student: If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
-
-:arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -56,20 +54,19 @@
 
 [![Made with Docker !](https://img.shields.io/badge/Made%20with-Docker-blue)](https://github.com/homeall/dhcphelper/blob/main/Dockerfile)
 
-:8ball: You will need to have:
+You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
 * :whale2: [docker-compose](https://docs.docker.com/compose/) 
  >This step is optional
 
-:arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 <!-- USAGE -->
 ## Usage
 
-:closed_book: You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
+You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
 
-:fountain_pen: You can run as:
+You can run as:
 
 `docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
 
@@ -88,7 +85,7 @@ $ nc -uzvw3 127.0.0.1 67
 Connection to 127.0.0.1 port 67 [udp/bootps] succeeded!
 ```
 
-:diamonds: On the status column of the docker, you will notice the `healthy` word. This is telling you that docker is running [healtcheck](https://scoutapm.com/blog/how-to-use-docker-healthcheck) itself in order to make sure it is working properly. Please test yourself using the following command:
+:hearts: On the status column of the docker, you will notice the `healthy` word. This is telling you that docker is running [healtcheck](https://scoutapm.com/blog/how-to-use-docker-healthcheck) itself in order to make sure it is working properly. Please test yourself using the following command:
 
 ```
 $ docker inspect --format "{{json .State.Health }}" dhcp | jq
@@ -190,14 +187,10 @@ services:
 
 :newspaper_roll: Distributed under the MIT license. See [LICENSE](https://raw.githubusercontent.com/homeall/dhcphelper/main/LICENSE) for more information.
 
-:arrow_up: [Go on TOP](#about-the-project) :point_up:
-
 <!-- CONTACT -->
 ## Contact
 
 :red_circle: Please free to open a ticket on Github.
-
-:arrow_up: [Go on TOP](#about-the-project) :point_up:
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
