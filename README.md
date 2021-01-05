@@ -54,9 +54,9 @@
 
 ### Prerequisites
 
-You will need to have:
-
 [![Made with Docker !](https://img.shields.io/badge/Made%20with-Docker-blue)](https://github.com/homeall/dhcphelper/blob/main/Dockerfile)
+
+:8ball: You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
 * :whale2: [docker-compose](https://docs.docker.com/compose/) 
