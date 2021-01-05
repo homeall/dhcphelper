@@ -76,7 +76,7 @@ You can run as:
 
 :warning: Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS and it is running on network host mode **ONLY**.
 
-:bangbang: Your can run the following command to see that is working:
+:bangbang: You can run the following command to see that is working:
 
 ```
 $ nc -uzvw3 127.0.0.1 67
