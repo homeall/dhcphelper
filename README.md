@@ -70,7 +70,7 @@ You can run as:
 
 `docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
 
-![](dhcphelper.gif)
+![](./assets/dhcphelper.gif)
 
 ### Potentials issues
 
