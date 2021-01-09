@@ -1,7 +1,7 @@
 ---
 # Mega-Linter GitHub Action configuration file
 # More info at https://nvuillam.github.io/mega-linter
-name: Mega-Linter
+name: Linter
 
 on:
   # Trigger mega-linter at every push. Action will also be visible from Pull Requests to master
