@@ -172,6 +172,7 @@ services:
     image: homeall/dhcphelper:latest
     environment:
       IP: '172.31.0.100'
+      TZ: 'Europe/London'
     cap_add:
       - NET_ADMIN
 ```
