@@ -1,6 +1,7 @@
 FROM alpine:latest
 
-RUN apk --no-cache add dhcp-helper
+RUN apk --no-cache add dhcp-helper tzdata; \
+    rm -rf /var/cache/apk/*;
 
 ENV IP=""
 
