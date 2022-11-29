@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-    schedule:
-      - cron: "0 9 1 * *"
+  schedule:
+  - cron: "0 9 1 * *"
 
 jobs:
   buildx:
