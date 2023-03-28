@@ -36,3 +36,8 @@ jobs:
           push: true
           tags: |
             homeall/dhcphelper:latest
+
+      - name: Create github release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          makeLatest: true
