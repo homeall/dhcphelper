@@ -38,6 +38,6 @@ jobs:
             homeall/dhcphelper:latest
 
       - name: Create github release
-        uses: ncipollo/release-action@v1.1.0
+        uses: ncipollo/release-action@v1
         with:
           makeLatest: true
