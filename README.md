@@ -43,12 +43,12 @@ The DHCP server in the container does get only *unicast the DHCPOFFER messages* 
 
 It will **not** work the DHCP server in docker even in **networking host mode** unless you are using any DHCP relay.
 
-:man_student: If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet). 
+:man_student: If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet).
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-:beginner: It will work on any Linux box amd64 or [Raspberry Pi](https://www.raspberrypi.org) with arm64 or arm32. 
+:beginner: It will work on any Linux box amd64 or [Raspberry Pi](https://www.raspberrypi.org) with arm64 or arm32.
 
 ### Prerequisites
 
@@ -57,7 +57,7 @@ It will **not** work the DHCP server in docker even in **networking host mode** 
 You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
-* :whale2: [docker-compose](https://docs.docker.com/compose/) 
+* :whale2: [docker-compose](https://docs.docker.com/compose/)
  >This step is optional
 
 
@@ -191,7 +191,7 @@ services:
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
- * :tada: [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038) :trophy:
- * :tada: [@Simon Kelley](http://www.thekelleys.org.uk/dhcp-helper/) who is the **author** of *dnsmasq* and *dhcp-helper*. :1st_place_medal:
+* :tada: [@DerFetzer](https://discourse.pi-hole.net/t/dhcp-with-docker-compose-and-bridge-networking/17038) :trophy:
+* :tada: [@Simon Kelley](http://www.thekelleys.org.uk/dhcp-helper/) who is the **author** of *dnsmasq* and *dhcp-helper*. :1st_place_medal:
 
 :arrow_up: [Go on TOP](#about-the-project) :point_up:
