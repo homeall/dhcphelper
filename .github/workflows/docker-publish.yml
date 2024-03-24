@@ -10,10 +10,11 @@ on:
 jobs:
   buildx:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
       - name: Set env
         run: echo "TAG=$(echo $(date +%Y.%m.%d))" >> $GITHUB_ENV
 
