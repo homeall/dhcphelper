@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           
       - name: Set env
         run: echo "TAG=$(echo $(date +%Y.%m.%d))" >> $GITHUB_ENV
