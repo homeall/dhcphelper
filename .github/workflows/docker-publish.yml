@@ -41,6 +41,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_NAME }}
+        tags: |
+          latest
 
       - name: Build and push
         uses: docker/build-push-action@v6
