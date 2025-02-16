@@ -71,7 +71,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          load: true
 
       - name: Sign the Published Docker Image
         id: sign-image
