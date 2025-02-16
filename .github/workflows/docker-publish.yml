@@ -49,7 +49,6 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Set up QEMU
         id: setup-qemu
         uses: docker/setup-qemu-action@v3.4.0
@@ -81,6 +80,24 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Generate SBOM attestation for Docker
+        id: sbom-docker
+        uses: actions/attest-sbom@v2.2.0
+        with:
+          subject-name: index.docker.io/${{ github.repository }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          sbom-path: 'sbom.json'
+          push-to-registry: true
+
+      - name: Generate SBOM attestation for GHCR
+        id: sbom-ghcr
+        uses: actions/attest-sbom@v2.2.0
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          sbom-path: 'sbom.json'
+          push-to-registry: true
           
       - name: Generate artifact attestation
         id: artifacts
@@ -110,7 +127,7 @@ jobs:
             COSIGN_EXPERIMENTAL=1 cosign sign --yes "${tag}@${DIGEST}"
           done
 
-      - name: Create github release
+      - name: Create Github release
         id: github-releasing
         uses: ncipollo/release-action@v1.15.0
         with:
