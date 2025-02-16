@@ -73,11 +73,10 @@ jobs:
       - name: Retrieve Image Digest
         id: get-digest
         run: |
-          # Retrieve the digest from one of the pushed tags (using "latest" here)
           image="${{ github.repository }}:latest"
           echo "Retrieving digest for image: $image"
-          digest=$(docker buildx imagetools inspect "$image" --raw | jq -r '.manifest.digest')
-          if [ -z "$digest" ]; then
+          digest=$(docker buildx imagetools inspect "$image" --raw | jq -r '.Digest')
+          if [ -z "$digest" ] || [ "$digest" = "null" ]; then
             echo "Failed to retrieve digest" >&2
             exit 1
           fi
