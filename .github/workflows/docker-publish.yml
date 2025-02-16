@@ -11,7 +11,8 @@ jobs:
   buildx:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      releases: write
       packages: write
       id-token: write
 
