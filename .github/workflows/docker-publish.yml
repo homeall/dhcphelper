@@ -81,6 +81,10 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: Generate SBOM with Syft
+        run: |
+          syft ${{ steps.build.outputs.digest }} -o json > sbom.json
+
       - name: Generate SBOM attestation for Docker
         id: sbom-docker
         uses: actions/attest-sbom@v2.2.0
