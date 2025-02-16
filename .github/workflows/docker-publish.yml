@@ -7,18 +7,23 @@ on:
   schedule:
   - cron: "0 9 1 * *"
 
-env:
-  IMAGE_NAME: homeall/dhcphelper
-
-
 jobs:
   buildx:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+       contents: read
+       packages: write
+       id-token: write
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3.8.0
+        with:
+          cosign-release: 'v2.4.2'
           
       - name: Set env
         run: echo "TAG=$(echo $(date +%Y.%m.%d))" >> $GITHUB_ENV
@@ -40,9 +45,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.IMAGE_NAME }}
+          images: ${{ github.repository }}
           tags: |
             latest
+            ${{ env.TAG }}
 
       - name: Build and push
         uses: docker/build-push-action@v6
@@ -54,6 +60,14 @@ jobs:
           provenance: mode=max
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Sign the published Docker image
+        if: ${{ github.event_name != 'pull_request' }}
+        env:
+          TAGS: ${{ steps.meta.outputs.tags }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
 
       - name: Create github release
         uses: ncipollo/release-action@v1.15.0
