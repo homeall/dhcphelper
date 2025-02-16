@@ -84,10 +84,10 @@ jobs:
           sleep 10
           
           # Retrieve digest for the 'latest' tag
-          digest_latest=$(docker buildx imagetools inspect "$image_latest" --raw | jq -r '.Digest')
+          digest_latest=$(docker buildx imagetools inspect "$image_latest" --raw | jq -r '.Descriptor.digest')
           echo "Retrieving digest for image: $image_date"
           # Retrieve digest for the date-based tag
-          digest_date=$(docker buildx imagetools inspect "$image_date" --raw | jq -r '.Digest')
+          digest_date=$(docker buildx imagetools inspect "$image_date" --raw | jq -r '.Descriptor.digest')
           
           # Check if either digest is empty or null
           if [ -z "$digest_latest" ] || [ "$digest_latest" = "null" ]; then
