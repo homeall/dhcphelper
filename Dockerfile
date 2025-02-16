@@ -9,4 +9,4 @@ EXPOSE 67/udp
 
 HEALTHCHECK CMD nc -uzvw3 127.0.0.1 67 || exit 1
 
-ENTRYPOINT dhcp-helper -n -s ${IP:-NODATA}
+ENTRYPOINT ["sh", "-c", "exec dhcp-helper -n -s ${IP:-NODATA}"]
