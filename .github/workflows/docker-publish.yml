@@ -80,32 +80,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Install Syft
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
-
-      - name: Generate SBOM with Syft
-        run: |
-          syft ${{ steps.build.outputs.digest }} -o json > sbom.json
-
-      - name: Generate SBOM attestation for Docker
-        id: sbom-docker
-        uses: actions/attest-sbom@v2.2.0
-        with:
-          subject-name: index.docker.io/${{ github.repository }}
-          subject-digest: ${{ steps.build.outputs.digest }}
-          sbom-path: 'sbom.json'
-          push-to-registry: true
-
-      - name: Generate SBOM attestation for GHCR
-        id: sbom-ghcr
-        uses: actions/attest-sbom@v2.2.0
-        with:
-          subject-name: ghcr.io/${{ github.repository }}
-          subject-digest: ${{ steps.build.outputs.digest }}
-          sbom-path: 'sbom.json'
-          push-to-registry: true
           
       - name: Generate artifact attestation
         id: artifacts
