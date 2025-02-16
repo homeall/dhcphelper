@@ -41,6 +41,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Login to GitHub Container Registry
+        id: github-login
+        uses: docker/login-action@v3.3.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+
       - name: Set up QEMU
         id: setup-qemu
         uses: docker/setup-qemu-action@v3.4.0
@@ -53,10 +62,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ github.repository }}
+          images: | 
+            ${{ github.repository }}
+            ghcr.io/${{ github.repository }}
           tags: |
             latest
-            ${{ env.TAG }}
+            ${{ env.TAG }}      
 
       - name: Build and Push
         id: build
@@ -76,6 +87,14 @@ jobs:
         uses: actions/attest-build-provenance@v2
         with:
           subject-name: index.docker.io/${{ github.repository }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
+          
+      - name: Generate artifact attestation for GHCR
+        id: artifacts-ghcr
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ghcr.io/${{ github.repository }}
           subject-digest: ${{ steps.build.outputs.digest }}
           push-to-registry: true
 
