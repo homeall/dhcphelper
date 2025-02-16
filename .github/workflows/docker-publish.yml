@@ -71,50 +71,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Retrieve Image Digest
-        id: get-digest
-        run: |
-          # Define fully qualified image references for both tags.
-          image_latest="docker.io/${{ github.repository }}:latest"
-          image_date="docker.io/${{ github.repository }}:${{ env.TAG }}"
-          
-          echo "Retrieving digest for image: $image_latest"
-          # Allow time for the image to be available in the registry
-          sleep 10
-          
-          # Retrieve digest for the 'latest' tag
-          digest_latest=$(docker buildx imagetools inspect "$image_latest" --raw | jq -r '.Descriptor.digest')
-          echo "Retrieving digest for image: $image_date"
-          # Retrieve digest for the date-based tag
-          digest_date=$(docker buildx imagetools inspect "$image_date" --raw | jq -r '.Descriptor.digest')
-          
-          # Check if either digest is empty or null
-          if [ -z "$digest_latest" ] || [ "$digest_latest" = "null" ]; then
-            echo "Failed to retrieve digest for $image_latest" >&2
-            exit 1
-          fi
-          if [ -z "$digest_date" ] || [ "$digest_date" = "null" ]; then
-            echo "Failed to retrieve digest for $image_date" >&2
-            exit 1
-          fi
-          
-          # Optionally, verify that both digests match.
-          if [ "$digest_latest" != "$digest_date" ]; then
-            echo "Digest mismatch: latest digest ($digest_latest) differs from date tag digest ($digest_date)" >&2
-            exit 1
-          fi
-          
-          # Set the common digest into the environment for subsequent steps.
-          echo "DIGEST=${digest_latest}" >> $GITHUB_ENV
-          echo "Digest found: ${digest_latest}"
+          load: true
 
       - name: Sign the Published Docker Image
         id: sign-image
         if: ${{ github.event_name != 'pull_request' }}
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
-          DIGEST: ${{ env.DIGEST }}
+          DIGEST: ${{ steps.docker_build.outputs.digest }}
         run: |
           for tag in $TAGS; do
             echo "Signing ${tag}@${DIGEST}"
