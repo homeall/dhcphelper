@@ -171,15 +171,15 @@ jobs:
           done
           
       - name: Sign Slim Image
-         id: sign-slim
-         if: github.event_name != 'pull_request'
-         env:
-           COSIGN_EXPERIMENTAL: 1
-           SLIM_TAGS: "${{ github.repository }}:slim ghcr.io/${{ github.repository }}:slim"
-         run: |
-           for tag in $SLIM_TAGS; do
+        id: sign-slim
+        if: github.event_name != 'pull_request'
+        env:
+          COSIGN_EXPERIMENTAL: 1
+          SLIM_TAGS: "${{ github.repository }}:slim ghcr.io/${{ github.repository }}:slim"
+        run: |
+          for tag in $SLIM_TAGS; do
             cosign sign --yes "${tag}"
-           done
+          done
 
       - name: Create Github release
         id: github-releasing
