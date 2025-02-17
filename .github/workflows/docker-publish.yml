@@ -94,7 +94,7 @@ jobs:
         env:
           REPORT: ${{ steps.slim.outputs.report }}
           
-      - name: Push Slimmed Docker Image Automatically
+      - name: Push Slimmed Docker Image
         id: slim-push
         run: |
           docker tag ${{ github.repository }}:slim ghcr.io/${{ github.repository }}:slim
@@ -137,7 +137,6 @@ jobs:
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
           DIGEST: ${{ steps.build.outputs.digest }}
-          SLIM
           COSIGN_EXPERIMENTAL: 1 
         run: |
           for tag in $TAGS; do
