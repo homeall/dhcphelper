@@ -102,14 +102,30 @@ jobs:
         with:
           target: ${{ github.repository }}:latest
           tag: slim-arm64
-      
+
+      - name: Push Intermediate Slim Images
+        run: |
+          docker tag ${{ github.repository }}:slim-amd64 ghcr.io/${{ github.repository }}:slim-amd64
+          docker tag ${{ github.repository }}:slim-arm64 ghcr.io/${{ github.repository }}:slim-arm64
+          docker push ${{ github.repository }}:slim-amd64
+          docker push ${{ github.repository }}:slim-arm64
+          docker push ghcr.io/${{ github.repository }}:slim-amd64
+          docker push ghcr.io/${{ github.repository }}:slim-arm64
+          
       - name: Create and Push Multi-Arch Manifest for Slim Image
         uses: Noelware/docker-manifest-action@master
         with:
           inputs: ${{ github.repository }}:slim
           images: ${{ github.repository }}:slim-amd64,${{ github.repository }}:slim-arm64
           push: true
-          
+
+      - name: Create and Push Multi-Arch Manifest for Slim Image for GHCR
+        uses: Noelware/docker-manifest-action@master
+        with:
+          inputs: ghcr.io/${{ github.repository }}:slim
+          images: ghcr.io/${{ github.repository }}:slim-amd64,ghcr.io/${{ github.repository }}:slim-arm64
+          push: true
+      
       - name: Generate artifact attestation
         id: artifacts
         uses: actions/attest-build-provenance@v2
@@ -154,17 +170,16 @@ jobs:
             cosign sign --yes "${tag}@${DIGEST}"
           done
           
-#      - name: Sign Slim Image
-#        id: sign-slim
-#        if: github.event_name != 'pull_request'
-#        env:
-#          COSIGN_EXPERIMENTAL: 1
-#          SLIM_TAGS: "${{ github.repository }}:slim ghcr.io/${{ github.repository }}:slim"
-#        run: |
-#          SLIM_DIGEST=$(echo "${{ steps.slim.outputs.report }}" | jq -r '.minified_image_digest')
-#          for tag in $SLIM_TAGS; do
-#            cosign sign --yes "${tag}@${SLIM_DIGEST}"
-#          done
+      - name: Sign Slim Image
+         id: sign-slim
+         if: github.event_name != 'pull_request'
+         env:
+           COSIGN_EXPERIMENTAL: 1
+           SLIM_TAGS: "${{ github.repository }}:slim ghcr.io/${{ github.repository }}:slim"
+         run: |
+           for tag in $SLIM_TAGS; do
+            cosign sign --yes "${tag}"
+           done
 
       - name: Create Github release
         id: github-releasing
