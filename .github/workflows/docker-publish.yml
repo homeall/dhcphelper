@@ -103,11 +103,6 @@ jobs:
           target: ${{ github.repository }}:latest
           tag: slim-arm64
       
-      - name: Push Intermediate Slim Images
-        run: |
-          docker push ${{ github.repository }}:slim-amd64
-          docker push ${{ github.repository }}:slim-arm64
-      
       - name: Create and Push Multi-Arch Manifest for Slim Image
         uses: Noelware/docker-manifest-action@master
         with:
