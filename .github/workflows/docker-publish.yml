@@ -89,7 +89,10 @@ jobs:
           DSLIM_NEW_LABEL: ${{ steps.meta.outputs.labels }}
         with:
           target: ${{ github.repository }}:latest
-          tag: slim
+
+      - run: echo "${REPORT}"
+        env:
+          REPORT: ${{ steps.slim.outputs.report }}
           
       - name: Push Slimmed Docker Image Automatically
         id: slim-push
@@ -113,19 +116,20 @@ jobs:
           subject-digest: ${{ steps.build.outputs.digest }}
           push-to-registry: true
 
-      - name: Generate SBOM
+      - name: Generate SBOM GHCR
         uses: anchore/sbom-action@v0
         with:
           image: ghcr.io/${{ github.repository }}:latest
           format: 'spdx-json'
           output-file: 'sbom.spdx.json'
 
-      - name: Attest SBOM
+      - name: Attest SBOM GHCR
         uses: actions/attest-sbom@v2
         with:
           subject-name: ghcr.io/${{ github.repository }}
           subject-digest: ${{ steps.build.outputs.digest }}
           sbom-path: 'sbom.spdx.json'
+          push-to-registry: true
 
       - name: Sign the Published Docker Image
         id: sign-image
@@ -133,6 +137,7 @@ jobs:
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
           DIGEST: ${{ steps.build.outputs.digest }}
+          SLIM
           COSIGN_EXPERIMENTAL: 1 
         run: |
           for tag in $TAGS; do
