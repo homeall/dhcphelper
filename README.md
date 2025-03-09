@@ -181,7 +181,7 @@ services:
 <!-- LICENSE -->
 ## License
 
-:newspaper_roll: Distributed under the MIT license. See [LICENSE](https://raw.githubusercontent.com/homeall/dhcphelper/main/LICENSE) for more information.
+:newspaper_roll: Check the [LICENSE](https://raw.githubusercontent.com/homeall/dhcphelper/main/LICENSE) for more information.
 
 <!-- CONTACT -->
 ## Contact
