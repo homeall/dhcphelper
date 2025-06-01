@@ -45,6 +45,12 @@ It will **not** work the DHCP server in docker even in **networking host mode** 
 
 :man_student: If you need to know more about how it works **DHCP protocol**, I highly recommend this [link](https://superuser.com/questions/811501/understanding-dhcp-discovery-specific-subnet).
 
+## ☕️ Support HomeAll
+
+Enjoying my home lab and IT projects?  
+[Buy me a coffee](https://buymeacoffee.com/homeall) to keep the ideas coming!
+
+[![Buy Me a Coffee](https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&slug=homeall&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff)](https://buymeacoffee.com/homeall)
 <!-- GETTING STARTED -->
 ## Getting Started
 
