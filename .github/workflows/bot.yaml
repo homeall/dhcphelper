@@ -13,16 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: hmarr/auto-approve-action@v4
+        name: Auto-approve PR
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: dependabot/fetch-metadata@v2
-        id: dependabot-metadata
+      - name: Enable auto-merge
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Auto-merge Dependabot PR
-        run: gh pr merge --auto --merge "$PR_URL"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: merge
