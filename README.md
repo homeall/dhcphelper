@@ -1,4 +1,5 @@
-[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions) 
+[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions)
+![Trivy Workflow Status](https://github.com/homeall/dhcphelper/actions/workflows/security-scan.yml/badge.svg?branch=main)
 [![Docker pulls](https://img.shields.io/docker/pulls/homeall/dhcphelper)](https://img.shields.io/docker/pulls/homeall/dhcphelper)
 [![Docker Image Size](https://img.shields.io/docker/image-size/homeall/dhcphelper/slim)](https://hub.docker.com/r/homeall/dhcphelper)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#) 
