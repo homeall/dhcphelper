@@ -1,5 +1,11 @@
-[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions) [![pull](https://img.shields.io/docker/pulls/homeall/dhcphelper)](https://img.shields.io/docker/pulls/homeall/dhcphelper) [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#) [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#) [![Alpine Linux](https://img.shields.io/badge/Alpine%20Linux-0D597F?logo=alpinelinux&logoColor=fff)](#) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://ionut.vip)
-
+[![dhcphelper](https://github.com/homeall/dhcphelper/workflows/CI/badge.svg)](https://github.com/homeall/dhcphelper/actions) 
+[![Docker pulls](https://img.shields.io/docker/pulls/homeall/dhcphelper)](https://img.shields.io/docker/pulls/homeall/dhcphelper)
+[![Docker Image Size](https://img.shields.io/docker/image-size/homeall/dhcphelper/slim)](https://hub.docker.com/r/homeall/dhcphelper)
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#) 
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#) 
+[![Alpine Linux](https://img.shields.io/badge/Alpine%20Linux-0D597F?logo=alpinelinux&logoColor=fff)](#) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://ionut.vip)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhomeall%2Fdhcphelper.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhomeall%2Fdhcphelper?ref=badge_shield)
 
 # DHCP Relay in docker
 
