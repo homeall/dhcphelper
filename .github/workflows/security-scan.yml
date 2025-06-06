@@ -1,4 +1,4 @@
-name: Trivy Ghcr Scan
+name: Trivy
 
 on:
   push:
