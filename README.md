@@ -57,18 +57,39 @@ It will **not** work the DHCP server in docker even in **networking host mode** 
 You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
-* :whale2: [docker-compose](https://docs.docker.com/compose/) 
+* :whale2: [docker-compose](https://docs.docker.com/compose/)
  >This step is optional
+
+### Build with Docker Bake
+
+To build the multi-architecture image and push it to a registry run:
+
+```bash
+$ docker buildx bake
+```
+
+The `docker-bake.hcl` file defines the supported platforms (`linux/amd64` and `linux/arm64`).
+
+The image includes a tiny Go utility (`udp-check`) used for the Docker healthcheck.
+It verifies that UDP port 67 is reachable instead of relying on `netcat`.
 
 
 <!-- USAGE -->
 ## Usage
 
-You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
+You only need to pass the IP address of your DHCP server using the `IP` environment variable.
 
-You can run as:
+Run the container in **host network mode** with `NET_ADMIN` capability so that DHCP traffic can be forwarded:
 
-`docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
+```bash
+$ docker run -d --name dhcphelper \
+  --network host \
+  --cap-add NET_ADMIN \
+  -e IP=172.31.0.100 \
+  -e TZ="Europe/London" \
+  homeall/dhcphelper:latest
+```
+The image runs as the **root** user by default so it can bind to port `67/udp`.
 
 ![](./assets/dhcphelper.gif)
 
@@ -76,12 +97,14 @@ You can run as:
 
 :warning: Please make sure your host has port **67 on UDP** *open* on **iptables/firewall** of your OS and it is running on network host mode **ONLY**.
 
-:bangbang: You can run the following command to see that is working:
+:bangbang: You can run the following command from your host to verify the UDP port is open:
 
 ```
 $ nc -uzvw3 127.0.0.1 67
 Connection to 127.0.0.1 port 67 [udp/bootps] succeeded!
 ```
+
+The container itself uses the built-in `udp-check` binary for health checks.
 
 :hearts: On the status column of the docker, you will notice the `healthy` word. This is telling you that docker is running [healtcheck](https://scoutapm.com/blog/how-to-use-docker-healthcheck) itself in order to make sure it is working properly. Please test yourself using the following command:
 
@@ -175,6 +198,7 @@ services:
       TZ: 'Europe/London'
     cap_add:
       - NET_ADMIN
+    # runs as root by default to bind to port 67/udp
 ```
 :arrow_up: [Go on TOP](#about-the-project) :point_up:
 
