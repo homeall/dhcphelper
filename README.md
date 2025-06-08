@@ -57,18 +57,36 @@ It will **not** work the DHCP server in docker even in **networking host mode** 
 You will need to have:
 
 * :whale: [Docker](https://docs.docker.com/engine/install/)
-* :whale2: [docker-compose](https://docs.docker.com/compose/) 
+* :whale2: [docker-compose](https://docs.docker.com/compose/)
  >This step is optional
+
+### Build with Docker Bake
+
+To build the multi-architecture image and push it to a registry run:
+
+```bash
+$ docker buildx bake
+```
+
+The `docker-bake.hcl` file defines the supported platforms (`linux/amd64` and `linux/arm64`).
 
 
 <!-- USAGE -->
 ## Usage
 
-You only need to pass as variable the IP address of DHCP server: `"-e IP=X.X.X.X"`
+You only need to pass the IP address of your DHCP server using the `IP` environment variable.
 
-You can run as:
+Run the container in **host network mode** with `NET_ADMIN` capability so that DHCP traffic can be forwarded:
 
-`docker run --privileged -d --name dhcp --net host -e "IP=172.31.0.100" homeall/dhcphelper:latest`
+```bash
+$ docker run -d --name dhcphelper \
+  --network host \
+  --cap-add NET_ADMIN \
+  -e IP=172.31.0.100 \
+  -e TZ="Europe/London" \
+  homeall/dhcphelper:latest
+```
+The image runs as the **root** user by default so it can bind to port `67/udp`.
 
 ![](./assets/dhcphelper.gif)
 
@@ -175,6 +193,7 @@ services:
       TZ: 'Europe/London'
     cap_add:
       - NET_ADMIN
+    # runs as root by default to bind to port 67/udp
 ```
 :arrow_up: [Go on TOP](#about-the-project) :point_up:
 
